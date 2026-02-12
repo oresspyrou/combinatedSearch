@@ -1,0 +1,7 @@
+elasticsearch
+sentence-transformers
+faiss-cpu
+pandas
+numpy
+scikit-learn
+tqdm
