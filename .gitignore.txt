@@ -1,0 +1,19 @@
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Virtual Environment (ΜΗΝ το ανεβάσεις ποτέ!)
+venv/
+.env
+
+# IDE settings (VS Code, Pycharm)
+.vscode/
+.idea/
+
+# Data & Large Files (Τα αγνοούμε για να μην γεμίσει το repo)
+data/IR2025/
+data/embeddings/
+data/results/
+
+# Αν θες να ανεβούν τα logs, κράτα τα, αλλιώς σβήσε την κάτω γραμμή
+data/logs/
