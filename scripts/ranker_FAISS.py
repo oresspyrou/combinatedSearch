@@ -1,62 +1,30 @@
-import numpy as np
 import faiss
-from typing import List
+import numpy as np
 from sentence_transformers import SentenceTransformer
-from scripts.logger import setup_logger
-
-logger = setup_logger(log_name="VectorRanker")
+from typing import List
 
 class VectorRanker:
-    """
-    Υλοποιεί το Semantic Search (Reranking).
-    Χρησιμοποιεί SBERT για embeddings και FAISS για υπολογισμό ομοιότητας.
-    """
+    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
+        self.model = SentenceTransformer(model_name)
 
-    def __init__(self, model_name: str):
-        """
-        Φορτώνει το μοντέλο Transformer στη μνήμη.
-        """
-        logger.info(f"Loading SBERT model: {model_name}...")
-        try:
-            self.model = SentenceTransformer(model_name)
-            logger.info(f"Model loaded successfully.")
-        except Exception as e:
-            logger.critical(f"Failed to load model {model_name}: {e}")
-            raise e
-
-    def get_scores(self, query: str, docs: List[str]) -> np.ndarray:
-        """
-        Υπολογίζει το Cosine Similarity μεταξύ του Query και μιας λίστας κειμένων.
-        
-        Διαδικασία (σύμφωνα με την εκφώνηση):
-        1. Embeddings (Query + Docs)
-        2. Dynamic FAISS Index
-        3. Search
-        """
-        if not docs:
+    def get_scores(self, query_text: str, doc_texts: List[str]) -> np.ndarray:
+        if not doc_texts:
             return np.array([])
 
-        try:
-            # 1. Δημιουργία Embeddings
-            # normalize_embeddings=True σημαίνει ότι το Dot Product ισοδυναμεί με Cosine Similarity
-            doc_embeddings = self.model.encode(docs, convert_to_numpy=True, normalize_embeddings=True)
-            query_embedding = self.model.encode([query], convert_to_numpy=True, normalize_embeddings=True)
+        query_embedding = self.model.encode([query_text]).astype('float32')
+        doc_embeddings = self.model.encode(doc_texts).astype('float32')
 
-            d = doc_embeddings.shape[1] 
+        faiss.normalize_L2(query_embedding)
+        faiss.normalize_L2(doc_embeddings)
+
+        dimension = doc_embeddings.shape[1]
+        index = faiss.IndexFlatIP(dimension) 
+        index.add(doc_embeddings)
+
+        distances, indices = index.search(query_embedding, len(doc_texts))
+        
+        final_scores = np.zeros(len(doc_texts))
+        for score, idx in zip(distances[0], indices[0]):
+            final_scores[idx] = score
             
-            index = faiss.IndexFlatIP(d) 
-            index.add(doc_embeddings)
-
-            k = len(docs)
-            scores, indices = index.search(query_embedding, k)
-
-            aligned_scores = np.zeros(k)
-            
-            for rank, original_idx in enumerate(indices[0]):
-                aligned_scores[original_idx] = scores[0][rank]
-
-            return aligned_scores
-
-        except Exception as e:
-            logger.error(f"Error during vector scoring: {e}")
-            return np.zeros(len(docs))
+        return final_scores
