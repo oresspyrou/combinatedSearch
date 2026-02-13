@@ -19,15 +19,11 @@ class AppConfig:
     
     MODEL_NAME: str = "all-MiniLM-L6-v2"
     
-    # --- ΟΙ ΣΗΜΑΝΤΙΚΕΣ ΑΛΛΑΓΕΣ ---
-    # Ζητάμε 1000 από τη βάση για να έχουμε μεγάλο εύρος
     N_RETRIEVE: int = 1000
     
-    # Γράφουμε 1000 στο αρχείο αποτελεσμάτων (όχι 50!)
     TOP_K: int = 1000
     
-    # Κρατάμε το Alpha χαμηλά γιατί το BM25 είναι δυνατό
-    ALPHA: float = 0.80      
+    ALPHA: float = 0.90     
 
     def __post_init__(self):
         self.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
