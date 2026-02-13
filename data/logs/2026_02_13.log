@@ -315,3 +315,58 @@
 18:17:05 | INFO | Results saved successfully to: C:\Users\OSpyrou\Desktop\SAP3\data\results\hybrid_results.txt
 18:17:05 | INFO | Pipeline completed successfully!
 18:17:05 | INFO | Application finished successfully.
+18:21:14 | DEBUG | Logger initialized successfully. Log file: C:\Users\OSpyrou\Desktop\SAP3\data\logs\2026_02_13.log
+18:21:24 | DEBUG | Logger initialized successfully. Log file: C:\Users\OSpyrou\Desktop\SAP3\data\logs\2026_02_13.log
+18:21:24 | DEBUG | Logger initialized successfully. Log file: C:\Users\OSpyrou\Desktop\SAP3\data\logs\2026_02_13.log
+18:21:24 | DEBUG | Logger initialized successfully. Log file: C:\Users\OSpyrou\Desktop\SAP3\data\logs\2026_02_13.log
+18:21:24 | INFO | Application is starting...
+18:21:24 | INFO | Configuration loaded. Mode: Hybrid (Alpha=0.9)
+18:21:24 | INFO | Initializing Hybrid Search Pipeline...
+18:21:24 | INFO | Connected to Elasticsearch at http://localhost:9200
+18:21:27 | INFO | Loading queries from: C:\Users\OSpyrou\Desktop\SAP3\data\IR2025\queries.csv
+18:21:27 | WARNING | Columns 'QueryID'/'Query' not found. Using 1st and 2nd columns.
+18:21:27 | INFO | Loaded 10 queries.
+18:21:27 | INFO | Starting Execution (Alpha=0.9, N=1000)...
+18:21:27 | DEBUG | Retrieved 1000 documents for query: 'EUTRAVEL Optimodal European Tr...'
+18:22:01 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:22:01 | DEBUG | BM25 range: [80.30, 886.06]
+18:22:01 | DEBUG | Vec range:  [-0.04, 0.93]
+18:22:01 | DEBUG | Retrieved 1000 documents for query: 'Track And Know Big Data for Mo...'
+18:22:36 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:22:36 | DEBUG | BM25 range: [66.26, 662.46]
+18:22:36 | DEBUG | Vec range:  [-0.10, 0.99]
+18:22:36 | DEBUG | Retrieved 1000 documents for query: 'SELIS, Towards a Shared Europe...'
+18:23:09 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:23:09 | DEBUG | BM25 range: [76.01, 943.32]
+18:23:09 | DEBUG | Vec range:  [-0.07, 0.95]
+18:23:09 | DEBUG | Retrieved 1000 documents for query: 'TYPHON Polyglot and Hybrid Per...'
+18:23:43 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:23:43 | DEBUG | BM25 range: [72.47, 911.44]
+18:23:43 | DEBUG | Vec range:  [-0.06, 0.97]
+18:23:43 | DEBUG | Retrieved 1000 documents for query: 'CHARIOT Cognitive Heterogeneou...'
+18:24:17 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:24:17 | DEBUG | BM25 range: [73.20, 896.05]
+18:24:17 | DEBUG | Vec range:  [-0.10, 0.89]
+18:24:17 | DEBUG | Retrieved 1000 documents for query: 'MaaS4EU End-to-End Approach fo...'
+18:24:51 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:24:51 | DEBUG | BM25 range: [90.18, 882.50]
+18:24:51 | DEBUG | Vec range:  [-0.05, 0.98]
+18:24:52 | DEBUG | Retrieved 1000 documents for query: 'SOFIE SOFIE - Secure Open Fede...'
+18:25:25 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:25:25 | DEBUG | BM25 range: [78.72, 954.22]
+18:25:25 | DEBUG | Vec range:  [-0.03, 0.94]
+18:25:26 | DEBUG | Retrieved 1000 documents for query: 'DATASET2050 Data driven approa...'
+18:25:59 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:25:59 | DEBUG | BM25 range: [67.41, 759.45]
+18:25:59 | DEBUG | Vec range:  [-0.07, 0.92]
+18:25:59 | DEBUG | Retrieved 1000 documents for query: '5GEx 5G Exchange The goal of t...'
+18:26:34 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:26:34 | DEBUG | BM25 range: [85.47, 881.82]
+18:26:34 | DEBUG | Vec range:  [0.01, 0.94]
+18:26:34 | DEBUG | Retrieved 1000 documents for query: 'netCommons network infrastruct...'
+18:27:07 | DEBUG | Fusion Stats -> Alpha: 0.9
+18:27:07 | DEBUG | BM25 range: [76.92, 776.67]
+18:27:07 | DEBUG | Vec range:  [-0.06, 0.96]
+18:27:07 | INFO | Results saved successfully to: C:\Users\OSpyrou\Desktop\SAP3\data\results\hybrid_results.txt
+18:27:07 | INFO | Pipeline completed successfully!
+18:27:07 | INFO | Application finished successfully.
