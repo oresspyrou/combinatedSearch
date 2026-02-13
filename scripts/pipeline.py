@@ -1,8 +1,8 @@
 import pandas as pd
 from tqdm import tqdm
 from scripts.logger import setup_logger
-from scripts.retriever import ElasticRetriever
-from scripts.ranker import VectorRanker
+from scripts.retriever_ES import ElasticRetriever
+from scripts.ranker_FAISS import VectorRanker
 from scripts.fusion import ScoreFusion
 from config import AppConfig
 

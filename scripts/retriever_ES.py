@@ -2,7 +2,6 @@ from elasticsearch import Elasticsearch
 from typing import List, Dict, Any
 from scripts.logger import setup_logger
 
-# Δημιουργία logger για αυτό το module
 logger = setup_logger(log_name="ElasticRetriever")
 
 class ElasticRetriever:
@@ -22,13 +21,11 @@ class ElasticRetriever:
         self.client = Elasticsearch(host)
         self.index = index_name
         
-        # Έλεγχος σύνδεσης κατά την εκκίνηση
         if self.client.ping():
             logger.info(f"Connected to Elasticsearch at {host}")
         else:
             logger.error(f"Could not connect to Elasticsearch at {host}!")
-            # Δεν κάνουμε raise exception εδώ για να μην κρασάρει όλο το app αμέσως,
-            # αλλά το pipeline θα πρέπει να το ελέγξει.
+
 
     def retrieve_candidates(self, query: str, size: int = 200) -> List[Dict[str, Any]]:
         """
@@ -42,13 +39,12 @@ class ElasticRetriever:
             List[Dict]: Λίστα με {id, text, bm25_score}.
         """
         try:
-            # Εκτέλεση Match Query (BM25)
             response = self.client.search(
                 index=self.index,
                 body={
                     "query": {
                         "match": {
-                            "Text": query  # Προσοχή: Βεβαιώσου ότι το πεδίο λέγεται 'Text' στο index σου
+                            "Text": query  
                         }
                     },
                     "size": size
@@ -58,14 +54,13 @@ class ElasticRetriever:
             hits = response['hits']['hits']
             logger.debug(f"Retrieved {len(hits)} documents for query: '{query[:30]}...'")
 
-            # Καθαρισμός και μορφοποίηση αποτελεσμάτων
             candidates = []
             for hit in hits:
                 source = hit['_source']
                 candidates.append({
-                    'id': source.get('ID', 'UNKNOWN'),    # Fallback αν λείπει το ID
-                    'text': source.get('Text', ''),       # Το κείμενο για τα embeddings
-                    'bm25_score': hit['_score']           # Το σκορ του BM25
+                    'id': source.get('ID', 'UNKNOWN'),   
+                    'text': source.get('Text', ''),      
+                    'bm25_score': hit['_score']         
                 })
 
             return candidates
