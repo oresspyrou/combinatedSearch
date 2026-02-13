@@ -1,0 +1,5 @@
+11:57:19 | DEBUG | Logger initialized successfully. Log file: C:\Users\OSpyrou\Desktop\SAP3\data\logs\2026_02_13.log
+11:57:19 | DEBUG | 🐛 Αυτό είναι ένα μήνυμα DEBUG (Θα φανεί ΜΟΝΟ στο αρχείο).
+11:57:19 | INFO | ℹ️ Αυτό είναι ένα μήνυμα INFO (Θα φανεί ΚΑΙ στην οθόνη).
+11:57:19 | WARNING | ⚠️ Προσοχή! Κάτι συμβαίνει (WARNING).
+11:57:19 | ERROR | ❌ Σφάλμα! Κάτι πήγε στραβά (ERROR).
