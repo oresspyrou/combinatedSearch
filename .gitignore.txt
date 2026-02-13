@@ -28,5 +28,7 @@ data/IR2025/documents.csv
 *.exe
 trec_eval.exe
 
+cygwin.dll
+
 # --- Temporary Files ---
 data/temp_*

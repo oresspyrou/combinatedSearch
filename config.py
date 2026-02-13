@@ -4,11 +4,6 @@ from pathlib import Path
 
 @dataclass
 class AppConfig:
-    """
-    Κεντρική κλάση ρυθμίσεων της εφαρμογής.
-    Συγκεντρώνει όλες τις σταθερές και τις διαδρομές αρχείων.
-    """
-
     PROJECT_ROOT: Path = Path(__file__).parent
     DATA_DIR: Path = PROJECT_ROOT / "data"
     
@@ -24,11 +19,17 @@ class AppConfig:
     
     MODEL_NAME: str = "all-MiniLM-L6-v2"
     
-    N_RETRIEVE: int = 200    
-    ALPHA: float = 0.5       
+    # --- ΟΙ ΣΗΜΑΝΤΙΚΕΣ ΑΛΛΑΓΕΣ ---
+    # Ζητάμε 1000 από τη βάση για να έχουμε μεγάλο εύρος
+    N_RETRIEVE: int = 1000
+    
+    # Γράφουμε 1000 στο αρχείο αποτελεσμάτων (όχι 50!)
+    TOP_K: int = 1000
+    
+    # Κρατάμε το Alpha χαμηλά γιατί το BM25 είναι δυνατό
+    ALPHA: float = 0.80      
 
     def __post_init__(self):
-        """Διασφαλίζει ότι οι φάκελοι εξόδου υπάρχουν."""
         self.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
         self.LOGS_DIR.mkdir(parents=True, exist_ok=True)
 
