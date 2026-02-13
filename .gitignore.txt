@@ -1,19 +1,32 @@
-# Python temporary files
+# --- Python & System Files ---
 __pycache__/
 *.pyc
+.DS_Store
 
-# Virtual Environment (ΜΗΝ το ανεβάσεις ποτέ!)
+# --- Virtual Environment (ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ) ---
 venv/
+env/
 .env
 
-# IDE settings (VS Code, Pycharm)
+# --- IDE Settings ---
 .vscode/
 .idea/
 
-# Data & Large Files (Τα αγνοούμε για να μην γεμίσει το repo)
-data/IR2025/
-data/embeddings/
-data/results/
+# --- Data & Large Files ---
+# Αγνοούμε τα αποτελέσματα για να μην γεμίζουμε το repo με δοκιμές
+data/results/*.txt
+# Αγνοούμε τα logs
+data/logs/*.log
+*.log
 
-# Αν θες να ανεβούν τα logs, κράτα τα, αλλιώς σβήσε την κάτω γραμμή
-data/logs/
+# Αν το documents.csv είναι πολύ μεγάλο (>100MB), GitHub δεν το δέχεται.
+# Καλύτερα να το αγνοήσουμε. (Τα queries και qrels είναι μικρά, κράτα τα)
+data/IR2025/documents.csv
+
+# --- Tools & Binaries ---
+# Δεν ανεβάζουμε .exe αρχεία (το trec_eval το κατεβάζει ο καθένας μόνος του)
+*.exe
+trec_eval.exe
+
+# --- Temporary Files ---
+data/temp_*
