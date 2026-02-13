@@ -16,7 +16,7 @@ class VectorRanker:
         """
         Φορτώνει το μοντέλο Transformer στη μνήμη.
         """
-        logger.info(f"⏳ Loading SBERT model: {model_name}...")
+        logger.info(f"Loading SBERT model: {model_name}...")
         try:
             self.model = SentenceTransformer(model_name)
             logger.info(f"Model loaded successfully.")
