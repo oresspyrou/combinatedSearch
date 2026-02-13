@@ -1,7 +1,6 @@
 import sys
 from config import AppConfig
-from scripts.pipeline import HybridPipeline
-from scripts.logger import setup_logger
+from scripts import HybridPipeline, setup_logger
 
 logger = setup_logger(log_name="MainApp")
 
